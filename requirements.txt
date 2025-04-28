@@ -1,0 +1,5 @@
+transformers
+faiss-cpu
+nltk
+torch
+numpy
