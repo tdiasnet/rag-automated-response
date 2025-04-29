@@ -1,6 +1,10 @@
 __pycache__/
 *.pyc
-.DS_Store
+.cache/
+.cache_huggingface/
+.cache_torch/
+.env/
+venv/
+.cache/
+.idea/
 .vscode/
-.env
-.venv/
