@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+datasets = "*"
+sentence-transformers = "*"
+transformers = "*"
+torch = "*"
+faiss-cpu = "*"
+elasticsearch = "*"
+fastapi = "*"
+uvicorn = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.13"

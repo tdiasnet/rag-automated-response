@@ -1,10 +1,14 @@
+# Python cache
 __pycache__/
 *.pyc
-.cache/
-.cache_huggingface/
-.cache_torch/
-.env/
-venv/
-.cache/
-.idea/
+
+# Virtual environment
+.venv/
+
+# Hugging Face and Torch model caches
+.cache_hf/
+
+# VSCode and system files
 .vscode/
+.DS_Store
+Thumbs.db

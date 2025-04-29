@@ -1,44 +1,43 @@
+# Project entry point / Ponto de entrada do projeto
+# This script loads the model, simulates retrieval, and generates an answer / 
+# Este script carrega o modelo, simula a recuperação e gera uma resposta
+
 import os
 
-# Configura o diretório de cache local
+# Set local cache to keep model data within the project / 
+# Define o cache local para manter os dados do modelo dentro do projeto
 os.environ["TRANSFORMERS_CACHE"] = os.path.join(os.getcwd(), ".cache_hf")
 os.environ["HF_HOME"] = os.path.join(os.getcwd(), ".cache_hf")
 os.environ["TORCH_HOME"] = os.path.join(os.getcwd(), ".cache_hf")
 
-# Imports locais
+# Internal modules (logic separation) / Módulos internos (separação da lógica)
 from model import load_model
 from inference import generate_response
-from retrieval import retrieve_docs  # Ainda será integrado futuramente
-from preprocess import clean_text     # Ainda será integrado futuramente
+from retrieval import retrieve_docs  # Placeholder for future implementation
+from preprocess import clean_text    # A ser integrado
 from prompt_engineering import create_prompt
 
 
 def main():
-    print("🔧 Carregando modelo...")
-    try:
-        model, tokenizer = load_model()
-    except Exception as e:
-        print(f"Erro ao carregar modelo: {e}")
-        return
+    # Step 1: Load model and tokenizer / Etapa 1: Carregar modelo e tokenizador
+    print("🔧 Loading model / Carregando modelo...")
+    model, tokenizer = load_model()
 
-    # Exemplo de pergunta
+    # Step 2: Define user question / Etapa 2: Definir pergunta do usuário
     question = "Como o RAG pode ser usado?"
-    print(f"❓ Pergunta: {question}")
+    print(f"❓ User question / Pergunta: {question}")
 
-    # Simulando contexto (substituir depois pelo retrieve_docs)
+    # Step 3: Simulate document retrieval / Etapa 3: Simular recuperação de contexto
     context = "O RAG usa recuperação de informações para melhorar as respostas geradas."
-    print(f"📄 Contexto simulado: {context}")
+    print(f"📄 Context (simulated) / Contexto (simulado): {context}")
 
-    # Monta o prompt
+    # Step 4: Build prompt with question and context / Etapa 4: Criar prompt com pergunta e contexto
     prompt = create_prompt(question, context)
-    print(f"🧠 Prompt gerado:\n{prompt}")
+    print(f"🧠 Prompt:\n{prompt}")
 
-    # Gera resposta
-    try:
-        response = generate_response(prompt, model, tokenizer)
-        print(f"\n✅ Resposta:\n{response}")
-    except Exception as e:
-        print(f"Erro durante inferência: {e}")
+    # Step 5: Generate answer using the model / Etapa 5: Gerar resposta com o modelo
+    response = generate_response(prompt, model, tokenizer)
+    print(f"\n✅ Response / Resposta:\n{response}")
 
 
 if __name__ == "__main__":

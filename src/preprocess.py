@@ -1,12 +1,13 @@
-import re
-import nltk
+# Clean input text or documents before using them in the pipeline
+# Limpa texto ou documentos antes de usá-los no pipeline
 
-nltk.download('stopwords')
-from nltk.corpus import stopwords
+import re
 
 def clean_text(text):
-    """Limpa o texto removendo stopwords e caracteres especiais."""
-    text = re.sub(r"[^a-zA-Z0-9\s]", "", text)
-    stop_words = set(stopwords.words('english'))
-    text = " ".join([word for word in text.split() if word not in stop_words])
-    return text
+    """
+    Apply basic text preprocessing: remove extra spaces and special characters.
+    Aplica pré-processamento básico de texto: remove espaços extras e caracteres especiais.
+    """
+    text = re.sub(r"\s+", " ", text)  # Remove multiple spaces / Remove espaços múltiplos
+    text = re.sub(r"[^\w\s.,?!-]", "", text)  # Remove unwanted characters / Remove caracteres indesejados
+    return text.strip()

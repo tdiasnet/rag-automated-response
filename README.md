@@ -1,21 +1,22 @@
-# Sistema de Resposta Automatizada com RAG (Retrieval-Augmented Generation)
+# 🤖 RAG-Automated-Response
 
-Este projeto é um sistema de resposta automática baseado em arquitetura RAG (Retrieval-Augmented Generation). Ele combina **busca vetorial** e **modelos de linguagem (LLMs)** para fornecer respostas mais precisas e contextualizadas a partir de uma base de dados própria.
+### Context-Aware Question Answering with Retrieval-Augmented Generation (RAG)  
+### Respostas Automáticas com Geração Aumentada por Recuperação de Contexto (RAG)
 
-## Objetivos
-- Integrar embeddings e FAISS para recuperação eficiente de documentos.
-- Utilizar LLMs para gerar respostas baseadas nas informações recuperadas.
-- Implementar boas práticas de engenharia de software: ambientes isolados, versionamento e cache controlado.
+---
 
-## Tecnologias e Bibliotecas
-- Python 3.12+
-- [Hugging Face Transformers](https://huggingface.co/docs/transformers/index)
-- [Sentence Transformers](https://www.sbert.net/)
-- [FAISS](https://github.com/facebookresearch/faiss)
-- [PyTorch](https://pytorch.org/)
-- [Datasets (Hugging Face)](https://huggingface.co/docs/datasets/)
+## 🧠 Project Summary / Resumo do Projeto
 
-## Estrutura do Projeto
+**EN:**  
+This project demonstrates how to build a simple question answering system using a Retrieval-Augmented Generation (RAG) architecture. It integrates traditional search (retrieval) with generative AI (RAG model) to generate more accurate and context-aware responses.
+
+**PT-BR:**  
+Este projeto demonstra como construir um sistema simples de perguntas e respostas usando a arquitetura de Geração Aumentada por Recuperação (RAG). Ele integra busca tradicional (retrieval) com IA generativa (modelo RAG) para gerar respostas mais precisas e com contexto.
+
+---
+
+## 📁 Folder Structure / Estrutura de Pastas
+
 ```bash
 ├── app/
 │   ├── __init__.py
