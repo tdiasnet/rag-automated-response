@@ -1,9 +1,11 @@
 # Python cache
 __pycache__/
 *.pyc
+.cache_hf
 
 # Virtual environment
 .venv/
+venv
 
 # Hugging Face and Torch model caches
 .cache_hf/

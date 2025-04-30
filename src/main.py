@@ -1,44 +1,51 @@
-# Project entry point / Ponto de entrada do projeto
-# This script loads the model, simulates retrieval, and generates an answer / 
-# Este script carrega o modelo, simula a recuperação e gera uma resposta
+# src/main.py
 
-import os
-
-# Set local cache to keep model data within the project / 
-# Define o cache local para manter os dados do modelo dentro do projeto
-os.environ["TRANSFORMERS_CACHE"] = os.path.join(os.getcwd(), ".cache_hf")
-os.environ["HF_HOME"] = os.path.join(os.getcwd(), ".cache_hf")
-os.environ["TORCH_HOME"] = os.path.join(os.getcwd(), ".cache_hf")
-
-# Internal modules (logic separation) / Módulos internos (separação da lógica)
+# Import local modules
+# Importa os módulos locais
 from model import load_model
 from inference import generate_response
-from retrieval import retrieve_docs  # Placeholder for future implementation
-from preprocess import clean_text    # A ser integrado
+from retrieval import retrieve_docs
+from preprocess import clean_text
 from prompt_engineering import create_prompt
 
+# Import system modules
+# Importa módulos do sistema
+import os
 
+# Set cache directory for Hugging Face and PyTorch
+# Define o diretório de cache para Hugging Face e PyTorch
+cache_dir = os.path.join(os.getcwd(), ".cache_hf")
+os.environ["HF_HOME"] = cache_dir   # Cache for Hugging Face models and datasets
+os.environ["TORCH_HOME"] = cache_dir  # Cache for PyTorch model files
+
+# Main entry point of the application
+# Ponto de entrada principal da aplicação
 def main():
-    # Step 1: Load model and tokenizer / Etapa 1: Carregar modelo e tokenizador
-    print("🔧 Loading model / Carregando modelo...")
+    # Load pretrained model and tokenizer
+    # Carrega o modelo pré-treinado e o tokenizador
     model, tokenizer = load_model()
 
-    # Step 2: Define user question / Etapa 2: Definir pergunta do usuário
+    # Example user question
+    # Exemplo de pergunta do usuário
     question = "Como o RAG pode ser usado?"
-    print(f"❓ User question / Pergunta: {question}")
 
-    # Step 3: Simulate document retrieval / Etapa 3: Simular recuperação de contexto
-    context = "O RAG usa recuperação de informações para melhorar as respostas geradas."
-    print(f"📄 Context (simulated) / Contexto (simulado): {context}")
+    # Retrieve relevant documents based on the question (simulated for now)
+    # Recupera documentos relevantes com base na pergunta (simulado por enquanto)
+    context = retrieve_docs(question)
 
-    # Step 4: Build prompt with question and context / Etapa 4: Criar prompt com pergunta e contexto
+    # Create prompt to feed the model
+    # Cria o prompt para alimentar o modelo
     prompt = create_prompt(question, context)
-    print(f"🧠 Prompt:\n{prompt}")
 
-    # Step 5: Generate answer using the model / Etapa 5: Gerar resposta com o modelo
+    # Generate answer from the model using the prompt
+    # Gera uma resposta do modelo utilizando o prompt
     response = generate_response(prompt, model, tokenizer)
-    print(f"\n✅ Response / Resposta:\n{response}")
 
+    # Display the generated response
+    # Exibe a resposta gerada
+    print(f"Resposta: {response}")
 
+# Run the main function when the script is executed
+# Executa a função principal quando o script é executado
 if __name__ == "__main__":
     main()

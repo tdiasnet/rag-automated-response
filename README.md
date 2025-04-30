@@ -18,7 +18,7 @@ Este projeto demonstra como construir um sistema simples de perguntas e resposta
 ## 📁 Folder Structure / Estrutura de Pastas
 
 ```bash
-├── app/
+├── src/
 │   ├── __init__.py
 │   ├── load_data.py
 │   ├── embed_data.py
