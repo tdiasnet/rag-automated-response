@@ -113,10 +113,10 @@ To run the FastAPI application, use the following command:
 ```bash
 uvicorn app.main:app --reload
 
-
 ## 📁 Folder Structure / Estrutura de Pastas
 
 
+### EN:
 ```bash
 ├── app/                       # FastAPI application for serving the API / Aplicação FastAPI para servir a API
 │   ├── __init__.py
